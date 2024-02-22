@@ -10,6 +10,10 @@ return [
 
     ],
 
+    'column_toggle' => [
+        'heading' => 'Oszlopok',
+    ],
+
     'fields' => [
 
         'search' => [
