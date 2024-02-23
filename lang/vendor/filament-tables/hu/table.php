@@ -53,7 +53,7 @@ return [
     ],
 
     'filters' => [
-
+        'heading' => 'Szűrők',
         'actions' => [
 
             'remove' => [

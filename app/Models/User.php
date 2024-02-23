@@ -10,10 +10,11 @@ use Laravel\Sanctum\HasApiTokens;
 use Filament\Panel;
 use Filament\Models\Contracts\FilamentUser; //!!! https://filamentphp.com/docs/2.x/admin/installation#deploying-to-production
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -23,6 +24,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'new_password',
     ];
 
     /**

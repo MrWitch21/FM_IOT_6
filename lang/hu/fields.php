@@ -13,4 +13,8 @@ return [
     'no' => 'Nem',
     'inactive' => 'Inaktív',
     'all' => 'Mind',
+    'email' => 'E-mail cím',
+    'password' => 'Jelszó',
+    'new_password' => 'Új Jelszó',
+    'deleted_at' => 'Törölve',
 ];

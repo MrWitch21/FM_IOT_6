@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PermissionResource\Pages;
-use App\Filament\Resources\PermissionResource\RelationManagers;
-use Spatie\Permission\Models\Permission;
+use App\Filament\Resources\RoleResource\Pages;
+use App\Filament\Resources\RoleResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,47 +11,37 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Spatie\Permission\Models\Role;
 
-class PermissionResource extends Resource
+class RoleResource extends Resource
 {
-    protected static ?string $model = Permission::class;
+    protected static ?string $model = Role::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-key';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     public static function getNavigationGroup(): string
     {
         return __('module_names.navigation_groups.administration');
     }
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
 
     public static function getModelLabel(): string
     {
-        return __('module_names.permissions.label');
+        return __('module_names.roles.label');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('module_names.permissions.plural_label');
+        return __('module_names.roles.plural_label');
     }
 
     public static function form(Form $form): Form
     {
-      return $form
-        ->schema([
-            Forms\Components\Section::make()
-              ->schema([
-                Forms\Components\TextInput::make('name')->label(__('fields.name'))
-                  ->required()
-                  ->unique(ignoreRecord: true)
-                  ->maxLength(255),
-                Forms\Components\Select::make('permissions')->label(__('module_names.permissions.plural_label'))
-                  ->relationship('permissions', 'name')
-                  ->multiple()
-                  ->preload()
-                  ->required(),
-              ])
-      ]);
+        return $form
+            ->schema([
+                //
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -86,10 +75,19 @@ class PermissionResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePermissions::route('/'),
+            'index' => Pages\ListRoles::route('/'),
+            'create' => Pages\CreateRole::route('/create'),
+            'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
     }
 }
