@@ -33,6 +33,20 @@ class DeviceTypeResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    public static function getNavigationGroup(): string
+    {
+        return __('module_names.navigation_groups.maintenance');
+    }
+    public static function getModelLabel(): string
+    {
+        return __('module_names.device_types.label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('module_names.device_types.plural_label');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -91,22 +105,5 @@ class DeviceTypeResource extends Resource
             'create' => Pages\CreateDeviceType::route('/create'),
             'edit' => Pages\EditDeviceType::route('/{record}/edit'),
         ];
-    }
-
-
-    public static function getNavigationGroup(): string
-    {
-        return __('module_names.navigation_groups.administration');
-    }
-
-    //a Model-hez tartozó többnyelvűsített nevek
-    public static function getModelLabel(): string
-    {
-        return __('module_names.device_types.label');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('module_names.device_types.plural_label');
     }
 }

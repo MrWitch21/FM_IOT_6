@@ -3,6 +3,7 @@
 return [
   'navigation_groups' => [
     'administration' => 'Adminisztráció',
+    'maintenance' => 'Karbantartás',
   ],
   'device_types' => [
     'label' => 'Berendezés típus',
@@ -11,5 +12,9 @@ return [
   'devices' => [
     'label' => 'Berendezés',
     'plural_label' => 'Berendezések',
+  ],
+  'permissions' => [
+    'label' => 'Jogosultság',
+    'plural_label' => 'Jogosultságok',
   ],
 ];

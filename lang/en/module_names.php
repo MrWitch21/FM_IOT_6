@@ -3,6 +3,7 @@
 return [
   'navigation_groups' => [
     'administration' => 'Administration',
+    'maintenance' => 'Maintenance',
   ],
   'device_types' => [
     'label' => 'Device type',
@@ -11,5 +12,9 @@ return [
   'devices' => [
     'label' => 'Device',
     'plural_label' => 'Devices',
+  ],
+  'permissions' => [
+    'label' => 'Permission',
+    'plural_label' => 'Permissions',
   ],
 ];

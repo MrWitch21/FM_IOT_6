@@ -128,10 +128,6 @@ class DeviceResource extends Resource
       ->actions([
         Tables\Actions\ViewAction::make(),
         Tables\Actions\EditAction::make(),
-        Tables\Actions\Action::make('QR')->label(__('fields.qr_code'))
-          ->modalContent(fn ($record): View => view('filament.resources.device-resource.pages.q-r-device', ['record' => $record]))
-          ->modalSubmitAction(false)
-          ->modalCancelAction(false)
       ])
       ->bulkActions([
         Tables\Actions\BulkActionGroup::make([
@@ -141,5 +137,16 @@ class DeviceResource extends Resource
       ->emptyStateActions([
         Tables\Actions\CreateAction::make(),
       ]);
+  }
+
+
+  public static function getPages(): array
+  {
+    return [
+      'index' => Pages\ListDevices::route('/'),
+      'create' => Pages\CreateDevice::route('/create'),
+      'view' => Pages\ViewDevice::route('/{record}'),
+      'edit' => Pages\EditDevice::route('/{record}/edit'),
+    ];
   }
 }
