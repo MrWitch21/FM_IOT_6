@@ -11,6 +11,8 @@ use Filament\Panel;
 use Filament\Models\Contracts\FilamentUser; //!!! https://filamentphp.com/docs/2.x/admin/installation#deploying-to-production
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,5 +51,9 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return str_ends_with($this->email, '@admin.hu'); //itt tudjuk testreszabni hogy milyen végződésű e-mail-el lehessen belépni @cégnév
+    }
+    public function ShiftSchedulesUser() : HasMany
+    {
+        return $this->hasMany(ShiftSchedule::class, 'user_id');
     }
 }
