@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\shift;
+
 return [
   'navigation_groups' => [
     'administration' => 'Adminisztráció',
     'maintenance' => 'Karbantartás',
+    'workshifts' => 'Műszakkezelés'
   ],
   'device_types' => [
     'label' => 'Berendezés típus',
@@ -27,5 +30,13 @@ return [
   ],
   'widgets' => [
     'usersbyroles' => 'Felhasználók szerepkörök szerint',
+  ],
+  'shifts'=>[
+    'label' => 'Műszak',
+    'plural_label' => 'Műszakok'
+  ],
+  'ShiftSchedules' =>[
+    'label' => 'Beosztás',
+    'plural_label' => 'Beosztás tervezés'
   ],
 ];

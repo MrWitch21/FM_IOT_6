@@ -4,6 +4,7 @@ return [
   'navigation_groups' => [
     'administration' => 'Administration',
     'maintenance' => 'Maintenance',
+    'workshifts' => 'Shift Manager'
   ],
   'device_types' => [
     'label' => 'Device type',
@@ -27,5 +28,13 @@ return [
   ],
   'widgets' => [
     'usersbyroles' => 'Users by role',
+  ],
+  'shifts'=>[
+    'label' => 'Shift',
+    'plural_label' => 'Shifts'
+  ],
+  'ShiftSchedules' =>[
+    'label' => 'Shift',
+    'plural_label' => 'Shift schedules'
   ],
 ];

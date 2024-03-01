@@ -12,19 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-/*
-tulajdonság mezői:
-model fájl megnevezése (ezt használja majd az Eloquent műveletek végrehajtásához)
-navigationIcon: a menüben ez az icon jelenik meg a neve mellett. A Filament alapértelmezetten a Heroicons nevű ikongyűjteményt használja, így ha egyszerűen le szeretnénk cserélni bárminek az ikonját, akkor ennek a gyűjtemények a tartalmában keresgéljünk: https://heroicons.com/
-metódusai:
-form(): ezzel a metódussal tudjuk meghatározni, hogy a létrehozási / szerkesztési (create / edit) űrlapon milyen típusú mezők jelenjenek meg és azoknak milyen validációs szabályoknak kell megfelelniük
-table(): ezzel a metódussal tudjuk meghatározni, hogy az erőforrás lista nézetén (index) látható táblázat milyen oszlopokat (columns, mezőket) tartalmazzon és azok milyen sorrendben kövessék egymást, esetleg kereshetőek vagy rendezhetőek legyenek, továbbá a táblázat még részletesebb testreszabása, például hogy milyen szűrőket (filters) lehessen beállítani és milyen műveleteket lehessen innen a lista nézetből még elérni:
-a táblázat soraiban (actions) adott erőforrás szerkesztése, törlése stb.
-ha már több erőforrásunk van a táblázatban, akkor "tömeges" műveleteket (bulkActions) is végrehajthatunk rajtuk az egyes sorok kijelölése után például együtt törölhetjük őket,
-ha még nincs erőforrásunk (emptyStateActions), akkor a táblázat helyén az új hozzáadása gomb elérhető.
-getRelations(): ezzel tudjuk majd beállítani, hogy az erőforrás milyen más erőforrásokkal legyen kapcsolatban (hasonlóan a modellekhez) és a kapcsolatot hogyan kezelje a Filament,
-getPages(): az erőforrások kezeléséhez tartozó útvonalakat lehet itt regisztrálni. Alapértelmezetten tartalmazza a lista, valamint a létrehozási (create) és szerkesztési (edit) útvonalakat.
-*/
+
 class DeviceTypeResource extends Resource
 {
     protected static ?string $model = DeviceType::class;

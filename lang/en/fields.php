@@ -17,4 +17,8 @@ return [
     'password' => 'Password',
     'new_password' => 'New Password',
     'deleted_at' => 'Deleted at',
+    'shift_date' => 'Shift date',
+    'shift_name' => 'Shift name',
+    'end.time' => 'Shift end',
+    'start.time' => 'Shift start',
 ];

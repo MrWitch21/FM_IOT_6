@@ -17,4 +17,8 @@ return [
     'password' => 'Jelszó',
     'new_password' => 'Új Jelszó',
     'deleted_at' => 'Törölve',
+    'shift_date' => 'Munkavégzés napja',
+    'shift_name' => 'Műszak neve',
+    'end.time' => 'Műszak vége',
+    'start.time' => 'Műszak kezdete',
 ];

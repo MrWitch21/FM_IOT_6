@@ -40,7 +40,7 @@ class ShiftScheduleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')->label(__('fields.user_name'))
+                Forms\Components\Select::make('user_id')->label(__('fields.name'))
                 ->relationship('user', 'name')
                 ->searchable()
                 ->preload()

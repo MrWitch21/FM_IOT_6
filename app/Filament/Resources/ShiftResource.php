@@ -41,7 +41,7 @@ class ShiftResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make()->schema([
-                    Forms\Components\TextInput::make('name')->label(__('fields.name'))->required(),
+                    Forms\Components\TextInput::make('name')->label(__('fields.shift_name'))->required(),
                     Forms\Components\TimePicker::make('start_time')->label(__('fields.start.time'))->required(),
                     Forms\Components\TimePicker::make('end_time')->label(__('fields.end.time'))->required(),
                 ]),
@@ -54,7 +54,7 @@ class ShiftResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                 ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->label(__('fields.name'))
+                Tables\Columns\TextColumn::make('name')->label(__('fields.shift_name'))
                 ->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('start_time')->label(__('fields.start.time'))->dateTime('H:i')
                 ->searchable()->sortable(),
