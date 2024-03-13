@@ -4,7 +4,8 @@ return [
   'navigation_groups' => [
     'administration' => 'Administration',
     'maintenance' => 'Maintenance',
-    'workshifts' => 'Shift Manager'
+    'workshifts' => 'Shift Manager',
+    'failure_report' => 'Failure report',
   ],
   'device_types' => [
     'label' => 'Device type',
@@ -44,5 +45,9 @@ return [
   'documents' => [
     'label' => 'Document',
     'plural_label' => 'Documents',
+  ],
+  'worksheets' => [
+    'label' => 'Worksheet',
+    'plural_label' => 'Worksheets',
   ],
 ];

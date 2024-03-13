@@ -8,14 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Panel;
-use Filament\Models\Contracts\FilamentUser; //!!! https://filamentphp.com/docs/2.x/admin/installation#deploying-to-production
+use Filament\Models\Contracts\FilamentUser;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
     /**
      * The attributes that are mass assignable.
@@ -55,5 +54,15 @@ class User extends Authenticatable implements FilamentUser
     public function ShiftSchedulesUser() : HasMany
     {
         return $this->hasMany(ShiftSchedule::class, 'user_id');
+    }
+
+    public function creators_worksheets(): HasMany
+    {
+        return $this->hasMany(Worksheet::class, 'creator_id');
+    }
+
+    public function repairers_worksheets(): HasMany
+    {
+        return $this->hasMany(Worksheet::class, 'repairer_id');
     }
 }

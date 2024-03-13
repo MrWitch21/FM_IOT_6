@@ -23,4 +23,13 @@ return [
     'start.time' => 'Műszak kezdete',
     'qr_code' => 'QR kód',
     'attachment' => 'Csatolt fájl',
+    'attachments' => 'Csatolt kép(ek)',
+    'creator' => 'Létrehozó',
+    'repairer' => 'Karbantartó',
+    'priority' => 'Prioritás',
+    'description' => 'Leírás',
+    'due_date' => 'Javítási határidő',
+    'finish_date' => 'Befejezés dátuma',
+    'updated_at' => 'Frissítve',
+    'user_name' => 'Név',
 ];

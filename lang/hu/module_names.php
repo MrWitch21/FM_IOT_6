@@ -6,7 +6,8 @@ return [
   'navigation_groups' => [
     'administration' => 'Adminisztráció',
     'maintenance' => 'Karbantartás',
-    'workshifts' => 'Műszakkezelés'
+    'workshifts' => 'Műszakkezelés',
+    'failure_report' => 'Hibabejelentés',
   ],
   'device_types' => [
     'label' => 'Berendezés típus',
@@ -47,5 +48,8 @@ return [
     'label' => 'Dokumentum',
     'plural_label' => 'Dokumentumok',
   ],
-
+  'worksheets' => [
+    'label' => 'Munkalap',
+    'plural_label' => 'Munkalapok',
+  ],
 ];

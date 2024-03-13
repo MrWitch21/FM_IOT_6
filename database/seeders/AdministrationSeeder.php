@@ -66,10 +66,10 @@ class AdministrationSeeder extends Seeder
         $ShiftSchedule3 = Permission::create(['name' => 'update ShiftSchedules']);
         $ShiftSchedule4 = Permission::create(['name' => 'delete ShiftSchedules']);
         // WORKSHEET MODEL
-        // $worksheet1 = Permission::create(['name' => 'create worksheets']);
-        // $worksheet2 = Permission::create(['name' => 'read worksheets']);
-        // $worksheet3 = Permission::create(['name' => 'update worksheets']);
-        // $worksheet4 = Permission::create(['name' => 'delete worksheets']);
+        $worksheet1 = Permission::create(['name' => 'create worksheets']);
+        $worksheet2 = Permission::create(['name' => 'read worksheets']);
+        $worksheet3 = Permission::create(['name' => 'update worksheets']);
+        $worksheet4 = Permission::create(['name' => 'delete worksheets']);
 
         $adminRole = Role::create(['name' => 'admin'])->syncPermissions([
             $userPermission1,
@@ -104,6 +104,10 @@ class AdministrationSeeder extends Seeder
             $ShiftSchedule2,
             $ShiftSchedule3,
             $ShiftSchedule4,
+            $worksheet1,
+            $worksheet2,
+            $worksheet3,
+            $worksheet4,
         ]);
         $repairerRole = Role::create(['name' => 'karbantartó'])->syncPermissions([
 
@@ -111,10 +115,10 @@ class AdministrationSeeder extends Seeder
 
             $document2,
 
-            // $worksheet1,
-            // $worksheet2,
-            // $worksheet3,
-            // $worksheet4,
+            $worksheet1,
+            $worksheet2,
+            $worksheet3,
+            $worksheet4,
         ]);
         $operatorRole = Role::create(['name' => 'gépkezelő'])->syncPermissions([
 
@@ -122,10 +126,10 @@ class AdministrationSeeder extends Seeder
 
             $document2,
 
-            // $worksheet1,
-            // $worksheet2,
-            // $worksheet3,
-            // $worksheet4,
+            $worksheet1,
+            $worksheet2,
+            $worksheet3,
+            $worksheet4,
         ]);
 
 

@@ -18,6 +18,8 @@ use App\Policies\PermissionPolicy;
 use App\Policies\ShiftPolicy;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Policies\WorksheetPolicy;
+use App\Models\Worksheet;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -37,6 +39,7 @@ class AuthServiceProvider extends ServiceProvider
     Document::class => DocumentPolicy::class,
     shift::class => ShiftPolicy::class,
     ShiftSchedule::class => ShiftPolicy::class,
+    Worksheet::class => WorksheetPolicy::class,
   ];
 
   /**
