@@ -21,4 +21,6 @@ return [
     'shift_name' => 'Shift name',
     'end.time' => 'Shift end',
     'start.time' => 'Shift start',
+    'qr_code' => 'QR code',
+    'attachment' => 'Attachment',
 ];

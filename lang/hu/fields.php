@@ -21,4 +21,6 @@ return [
     'shift_name' => 'Műszak neve',
     'end.time' => 'Műszak vége',
     'start.time' => 'Műszak kezdete',
+    'qr_code' => 'QR kód',
+    'attachment' => 'Csatolt fájl',
 ];

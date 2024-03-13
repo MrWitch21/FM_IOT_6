@@ -10,7 +10,7 @@ class shift extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'start_time', 'end_time'];
-    public function ShiftSchedulesShift() : HasMany
+    public function shiftSchedules() : HasMany
     {
         return $this->hasMany(ShiftSchedule::class, 'shift_id');
     }

@@ -48,6 +48,28 @@ class AdministrationSeeder extends Seeder
         $device3 = Permission::create(['name' => 'update devices']);
         $device4 = Permission::create(['name' => 'delete devices']);
 
+        // DOCUMENT MODEL
+        $document1 = Permission::create(['name' => 'create documents']);
+        $document2 = Permission::create(['name' => 'read documents']);
+        $document3 = Permission::create(['name' => 'update documents']);
+        $document4 = Permission::create(['name' => 'delete documents']);
+
+        //shift
+        $shift1 = Permission::create(['name' => 'create shifts']);
+        $shift2 = Permission::create(['name' => 'read shifts']);
+        $shift3 = Permission::create(['name' => 'update shifts']);
+        $shift4 = Permission::create(['name' => 'delete shifts']);
+
+        //shiftschedule
+        $ShiftSchedule1 = Permission::create(['name' => 'create ShiftSchedules']);
+        $ShiftSchedule2 = Permission::create(['name' => 'read ShiftSchedules']);
+        $ShiftSchedule3 = Permission::create(['name' => 'update ShiftSchedules']);
+        $ShiftSchedule4 = Permission::create(['name' => 'delete ShiftSchedules']);
+        // WORKSHEET MODEL
+        // $worksheet1 = Permission::create(['name' => 'create worksheets']);
+        // $worksheet2 = Permission::create(['name' => 'read worksheets']);
+        // $worksheet3 = Permission::create(['name' => 'update worksheets']);
+        // $worksheet4 = Permission::create(['name' => 'delete worksheets']);
 
         $adminRole = Role::create(['name' => 'admin'])->syncPermissions([
             $userPermission1,
@@ -70,13 +92,42 @@ class AdministrationSeeder extends Seeder
             $device2,
             $device3,
             $device4,
+            $document1,
+            $document2,
+            $document3,
+            $document4,
+            $shift1,
+            $shift2,
+            $shift3,
+            $shift4,
+            $ShiftSchedule1,
+            $ShiftSchedule2,
+            $ShiftSchedule3,
+            $ShiftSchedule4,
         ]);
         $repairerRole = Role::create(['name' => 'karbantartó'])->syncPermissions([
-          $device2,
+
+            $device2,
+
+            $document2,
+
+            // $worksheet1,
+            // $worksheet2,
+            // $worksheet3,
+            // $worksheet4,
         ]);
         $operatorRole = Role::create(['name' => 'gépkezelő'])->syncPermissions([
-          $device2,
+
+            $device2,
+
+            $document2,
+
+            // $worksheet1,
+            // $worksheet2,
+            // $worksheet3,
+            // $worksheet4,
         ]);
+
 
         // CREATE ADMINS & USERS
         User::create([

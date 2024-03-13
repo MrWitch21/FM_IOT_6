@@ -39,4 +39,13 @@ return [
     'label' => 'Beosztás',
     'plural_label' => 'Beosztás tervezés'
   ],
+  'Calendar'=>[
+    'label' => 'Beosztás',
+    'plural_label' => 'Beosztások'
+  ],
+  'documents' => [
+    'label' => 'Dokumentum',
+    'plural_label' => 'Dokumentumok',
+  ],
+
 ];

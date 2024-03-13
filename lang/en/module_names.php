@@ -37,4 +37,12 @@ return [
     'label' => 'Shift',
     'plural_label' => 'Shift schedules'
   ],
+  'Calendar'=>[
+    'label' => 'Work shift',
+    'plural_label' => 'Work shifts'
+  ],
+  'documents' => [
+    'label' => 'Document',
+    'plural_label' => 'Documents',
+  ],
 ];

@@ -10,10 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Infolists\Infolist;
-use Filament\Infolists;
 
 class ShiftScheduleResource extends Resource
 {
@@ -21,7 +17,7 @@ class ShiftScheduleResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
-    protected static ?int $navigationSort = 7;
+    protected static ?int $navigationSort = 8;
 
     public static function getNavigationGroup(): string
     {
@@ -41,47 +37,37 @@ class ShiftScheduleResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')->label(__('fields.name'))
-                ->relationship('user', 'name')
-                ->searchable()
-                ->preload()
-                ->required(),
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\DatePicker::make('shift_date')->label(__('fields.shift_date'))
-                ->required(),
+                    ->required(),
                 Forms\Components\Select::make('shift_id')->label(__('fields.shift_name'))
-                ->relationship('shift', 'name')
-                ->searchable()
-                ->preload()
-                ->required(),
+                    ->relationship('shift', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('note')->label(__('fields.note'))
-                ->maxLength(255),
+                    ->maxLength(255),
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
-  {
-    return $infolist
-      ->schema([
-        Infolists\Components\TextEntry::make('user.name')->label(__('fields.user_name')),
-        Infolists\Components\TextEntry::make('shift_date')->label(__('fields.shift_date')),
-        Infolists\Components\TextEntry::make('shift.name')->label(__('fields.shift_name')),
-        Infolists\Components\TextEntry::make('notes')->label(__('fields.note')),
-      ]);
-  }
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('user.name')->label(__('fields.user_name'))
-                ->searchable()->sortable(),
+                    ->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('shift_date')->label(__('fields.shift_date'))
-                ->dateTime('Y-m-d')
-                ->searchable()->sortable(),
+                    ->dateTime('Y-m-d')
+                    ->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('shift.name')->label(__('fields.shift_name'))
-                ->searchable()->sortable(),
+                    ->searchable()->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('user_name')->relationship('user', 'name')->label(__('fields.user_name'))
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -99,9 +85,7 @@ class ShiftScheduleResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-
-        ];
+        return [];
     }
 
     public static function getPages(): array
