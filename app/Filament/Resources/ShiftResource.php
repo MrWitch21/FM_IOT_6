@@ -13,7 +13,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-
 class ShiftResource extends Resource
 {
     protected static ?string $model = Shift::class;
@@ -40,11 +39,16 @@ class ShiftResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()->schema([
-                    Forms\Components\TextInput::make('name')->label(__('fields.shift_name'))->required(),
-                    Forms\Components\TimePicker::make('start_time')->label(__('fields.start.time'))->required(),
-                    Forms\Components\TimePicker::make('end_time')->label(__('fields.end.time'))->required(),
-                ]),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->columnSpanFull()
+                    ->maxLength(255),
+                Forms\Components\TimePicker::make('start_time')
+                    ->label(__('fields.start.time'))
+                    ->required(),
+                Forms\Components\TimePicker::make('end_time')
+                    ->label(__('fields.end.time'))
+                    ->required(),
             ]);
     }
 
@@ -52,20 +56,22 @@ class ShiftResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->label(__('fields.shift_name'))
-                ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('start_time')->label(__('fields.start.time'))->dateTime('H:i')
-                ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('end_time')->label(__('fields.end.time'))->dateTime('H:i')
-                ->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('name')->label(__('fields.name'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('start_time')
+                    ->label(__('fields.start.time'))
+                    ->dateTime('H:i'),
+                Tables\Columns\TextColumn::make('end_time')
+                    ->label(__('fields.end.time'))
+                    ->dateTime('H:i'),
+                Tables\Columns\TextColumn::make('created_at')->label(__('fields.created_at'))
+                    ->dateTime('Y-m-d H:i')
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -80,9 +86,7 @@ class ShiftResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            RelationManagers\ShiftSchedulesRelationManager::class,
-        ];
+        return [];
     }
 
     public static function getPages(): array
@@ -90,7 +94,6 @@ class ShiftResource extends Resource
         return [
             'index' => Pages\ListShifts::route('/'),
             'create' => Pages\CreateShift::route('/create'),
-            'view' => Pages\ViewShift::route('/{record}'),
             'edit' => Pages\EditShift::route('/{record}/edit'),
         ];
     }

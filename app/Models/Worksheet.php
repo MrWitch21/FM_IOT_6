@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Enums\WorksheetPriority;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Worksheet extends Model
 {
@@ -27,16 +27,16 @@ class Worksheet extends Model
     ];
     public function device(): BelongsTo
     {
-        return $this->belongsTo(Device::class);
+      return $this->belongsTo(Device::class);
     }
 
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'creator_id'); // aki létrehozta a munkalapot
+      return $this->belongsTo(User::class, 'creator_id'); // aki létrehozta a munkalapot
     }
 
     public function repairer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'repairer_id'); // aki karbantartó!
+      return $this->belongsTo(User::class, 'repairer_id'); // aki karbantartó!
     }
 }

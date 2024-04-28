@@ -24,7 +24,7 @@ class DeviceResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-wrench';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 2;
 
     public static function getNavigationGroup(): string
     {
@@ -142,21 +142,22 @@ class DeviceResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\DocumentsRelationManager::class,
-        ];
-    }
+
 
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListDevices::route('/'),
             'create' => Pages\CreateDevice::route('/create'),
-            'qr' => Pages\QRDevice::route('/qr/{record}'),
             'view' => Pages\ViewDevice::route('/{record}'),
             'edit' => Pages\EditDevice::route('/{record}/edit'),
+            'qr' => Pages\QRDevice::route('/qr/{record}'),
         ];
+    }
+    public static function getRelations(): array
+    {
+      return [
+          RelationManagers\DocumentsRelationManager::class,
+      ];
     }
 }

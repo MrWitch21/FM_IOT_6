@@ -3,18 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Filament\Panel;
-use Filament\Models\Contracts\FilamentUser;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Filament\Models\Contracts\FilamentUser; //!!! https://filamentphp.com/docs/2.x/admin/installation#deploying-to-production
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements FilamentUser
 {
+    use HasApiTokens, HasFactory, Notifiable;
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
     /**
      * The attributes that are mass assignable.
@@ -49,13 +51,8 @@ class User extends Authenticatable implements FilamentUser
     ];
     public function canAccessPanel(Panel $panel): bool
     {
-        return str_ends_with($this->email, '@admin.hu'); //itt tudjuk testreszabni hogy milyen végződésű e-mail-el lehessen belépni @cégnév
+        return str_ends_with($this->email, '@admin.hu');
     }
-    public function ShiftSchedulesUser() : HasMany
-    {
-        return $this->hasMany(ShiftSchedule::class, 'user_id');
-    }
-
     public function creators_worksheets(): HasMany
     {
         return $this->hasMany(Worksheet::class, 'creator_id');
@@ -64,5 +61,14 @@ class User extends Authenticatable implements FilamentUser
     public function repairers_worksheets(): HasMany
     {
         return $this->hasMany(Worksheet::class, 'repairer_id');
+    }
+
+    public function skills() : BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class, 'skill_user')->withTimestamps();
+    }
+    public function SchedulesUser(): HasMany
+    {
+        return $this->hasMany(Schedule::class, 'user_id');
     }
 }

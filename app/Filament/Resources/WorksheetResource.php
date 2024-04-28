@@ -2,14 +2,12 @@
 
 namespace App\Filament\Resources;
 
-use Closure;
 use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Worksheet;
 use Filament\Tables\Table;
-use Illuminate\Support\Carbon;
 use App\Enums\WorksheetPriority;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
@@ -70,13 +68,6 @@ class WorksheetResource extends Resource
                     Forms\Components\DatePicker::make('finish_date')->label(__('fields.finish_date'))
                         ->disabled(!auth()->user()->can('update worksheets'))
                         ->minDate(now())
-                        ->maxDate(function (Closure $get) {
-                            $due_date = $get('due_date');
-                            if ($due_date != null) {
-                                return Carbon::parse($due_date);
-                            }
-                            return null;
-                        })
                         ->default(now()),
                     Forms\Components\FileUpload::make('attachments')->label(__('fields.attachments'))
                         ->required()
@@ -184,5 +175,12 @@ class WorksheetResource extends Resource
             'view' => Pages\ViewWorksheet::route('/{record}'),
             'edit' => Pages\EditWorksheet::route('/{record}/edit'),
         ];
+    }
+    public static function getEloquentQuery(): Builder
+    {
+        if (!auth()->user()->can('update worksheets')) {
+            return parent::getEloquentQuery()->where('creator_id', auth()->user()->id);
+        }
+        return parent::getEloquentQuery();
     }
 }

@@ -3,11 +3,11 @@
 namespace App\Filament\Resources\WorksheetResource\Pages;
 
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
-use App\Filament\Resources\WorksheetResource;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\Worksheet;
 use App\Enums\WorksheetPriority;
+use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\WorksheetResource;
 use Filament\Resources\Pages\ListRecords\Tab;
 
 class ListWorksheets extends ListRecords
@@ -20,7 +20,6 @@ class ListWorksheets extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-
     public function getTabs(): array
     {
         $tabs = [
@@ -30,11 +29,11 @@ class ListWorksheets extends ListRecords
         ];
 
         $priorities = array_column(WorksheetPriority::cases(), 'value');
-        // dd(WorksheetPriority::tryFrom('Normál')?->getIcon());
+
         foreach ($priorities as $priority) {
             $tabs[$priority] = Tab::make()->label($priority)
                 ->modifyQueryUsing(
-                    fn(Builder $query) => $query
+                    fn (Builder $query) => $query
                         ->where('priority', $priority)
                 )
                 ->badge(

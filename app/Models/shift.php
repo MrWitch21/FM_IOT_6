@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class shift extends Model
+class Shift extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'start_time', 'end_time'];
-    public function shiftSchedules() : HasMany
+    public function Schedules() : HasMany
     {
-        return $this->hasMany(ShiftSchedule::class, 'shift_id');
+        return $this->hasMany(Schedule::class, 'shift_id');
     }
 }

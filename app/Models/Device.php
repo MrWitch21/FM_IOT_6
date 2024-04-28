@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Device extends Model
 {
@@ -31,6 +31,6 @@ class Device extends Model
     }
     public function worksheets(): HasMany
     {
-        return $this->hasMany(Worksheet::class);
+      return $this->hasMany(Worksheet::class);
     }
 }

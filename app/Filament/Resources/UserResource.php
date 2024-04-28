@@ -67,6 +67,11 @@ class UserResource extends Resource
             ->label(
               fn (Page $livewire): string => ($livewire instanceof EditUser) ? __('fields.new_password') : __('fields.password')
             ),
+          Forms\Components\Select::make('skills')->label(__('module_names.skills.label'))
+            ->columnSpanFull()
+            ->relationship('skills', 'name')
+            ->preload()
+            ->multiple(),
           Forms\Components\CheckboxList::make('roles')->label(__('module_names.roles.label'))
             ->columnSpanFull()
             ->relationship('roles', 'name')
@@ -121,7 +126,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ShiftSchedulesRelationManager::class,
+            //
         ];
     }
 

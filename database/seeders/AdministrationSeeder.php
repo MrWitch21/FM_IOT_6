@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 class AdministrationSeeder extends Seeder
 {
     /**
@@ -54,108 +55,140 @@ class AdministrationSeeder extends Seeder
         $document3 = Permission::create(['name' => 'update documents']);
         $document4 = Permission::create(['name' => 'delete documents']);
 
-        //shift
-        $shift1 = Permission::create(['name' => 'create shifts']);
-        $shift2 = Permission::create(['name' => 'read shifts']);
-        $shift3 = Permission::create(['name' => 'update shifts']);
-        $shift4 = Permission::create(['name' => 'delete shifts']);
-
-        //shiftschedule
-        $ShiftSchedule1 = Permission::create(['name' => 'create ShiftSchedules']);
-        $ShiftSchedule2 = Permission::create(['name' => 'read ShiftSchedules']);
-        $ShiftSchedule3 = Permission::create(['name' => 'update ShiftSchedules']);
-        $ShiftSchedule4 = Permission::create(['name' => 'delete ShiftSchedules']);
         // WORKSHEET MODEL
         $worksheet1 = Permission::create(['name' => 'create worksheets']);
         $worksheet2 = Permission::create(['name' => 'read worksheets']);
         $worksheet3 = Permission::create(['name' => 'update worksheets']);
         $worksheet4 = Permission::create(['name' => 'delete worksheets']);
 
+        //SKILL MODEL
+        $skill1 = Permission::create(['name' => 'create skills']);
+        $skill2 = Permission::create(['name' => 'read skills']);
+        $skill3 = Permission::create(['name' => 'update skills']);
+
+        //SHIFT MODEL
+        $shift1 = Permission::create(['name' => 'create shifts']);
+        $shift2 = Permission::create(['name' => 'read shifts']);
+        $shift3 = Permission::create(['name' => 'update shifts']);
+
+        //SCHEDULE MODEL
+        $schedule1 = Permission::create(['name' => 'create schedules']);
+        $schedule2 = Permission::create(['name' => 'read schedules']);
+        $schedule3 = Permission::create(['name' => 'update schedules']);
+
         $adminRole = Role::create(['name' => 'admin'])->syncPermissions([
             $userPermission1,
             $userPermission2,
             $userPermission3,
             $userPermission4,
+
             $rolePermission1,
             $rolePermission2,
             $rolePermission3,
             $rolePermission4,
+
             $permission1,
             $permission2,
             $permission3,
             $permission4,
+
             $deviceType1,
             $deviceType2,
             $deviceType3,
             $deviceType4,
+
             $device1,
             $device2,
             $device3,
             $device4,
+
             $document1,
             $document2,
             $document3,
             $document4,
+
+            $worksheet1,
+            $worksheet2,
+            $worksheet3,
+            $worksheet4,
+
+            $skill1,
+            $skill2,
+            $skill3,
+
             $shift1,
             $shift2,
             $shift3,
-            $shift4,
-            $ShiftSchedule1,
-            $ShiftSchedule2,
-            $ShiftSchedule3,
-            $ShiftSchedule4,
-            $worksheet1,
-            $worksheet2,
-            $worksheet3,
-            $worksheet4,
+
+            $schedule1,
+            $schedule2,
+            $schedule3,
         ]);
         $repairerRole = Role::create(['name' => 'karbantartó'])->syncPermissions([
-
             $device2,
-
             $document2,
-
             $worksheet1,
             $worksheet2,
             $worksheet3,
             $worksheet4,
+            $shift2,
+            $schedule2,
         ]);
         $operatorRole = Role::create(['name' => 'gépkezelő'])->syncPermissions([
-
             $device2,
-
             $document2,
-
             $worksheet1,
             $worksheet2,
             $worksheet3,
             $worksheet4,
+            $shift2,
+            $schedule2,
         ]);
-
-
+        $hrRole = Role::create(['name' => 'HR'])->syncPermissions([
+            $userPermission1,
+            $userPermission2,
+            $userPermission3,
+            $skill1,
+            $skill2,
+            $skill3,
+            $shift1,
+            $shift2,
+            $shift3,
+            $schedule1,
+            $schedule2,
+            $schedule3,
+        ]);
         // CREATE ADMINS & USERS
         User::create([
-          'name' => 'admin',
-          'email' => 'admin@admin.hu',
-          'email_verified_at' => now(),
-          'password' => Hash::make('password'),
-          'remember_token' => Str::random(10),
+            'name' => 'Nagy Pista',
+            'email' => 'admin@admin.hu',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
         ])->assignRole($adminRole);
 
         User::create([
-          'name' => 'repairer',
-          'email' => 'repairer@admin.hu',
-          'email_verified_at' => now(),
-          'password' => Hash::make('password'),
-          'remember_token' => Str::random(10),
+            'name' => 'Nagy Sándor',
+            'email' => 'repairer@admin.hu',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
         ])->assignRole($repairerRole);
 
         User::create([
-          'name' => 'operator',
-          'email' => 'operator@admin.hu',
-          'email_verified_at' => now(),
-          'password' => Hash::make('password'),
-          'remember_token' => Str::random(10),
+            'name' => 'Kiss Sándor',
+            'email' => 'operator@admin.hu',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
         ])->assignRole($operatorRole);
+
+        User::create([
+            'name' => 'Kiss Pista',
+            'email' => 'hr@admin.hu',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+        ])->assignRole($hrRole);
     }
 }

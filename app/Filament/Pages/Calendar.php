@@ -9,7 +9,7 @@ class Calendar extends Page
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     protected static string $view = 'filament.pages.calendar';
-    protected static ?int $navigationSort = 9;
+    protected static ?int $navigationSort = 10;
     protected static ?string $pluralModelLabel = 'clientes';
     public static function getNavigationGroup(): string
     {
@@ -19,5 +19,4 @@ class Calendar extends Page
     {
         return __('module_names.Calendar.label');
     }
-
 }

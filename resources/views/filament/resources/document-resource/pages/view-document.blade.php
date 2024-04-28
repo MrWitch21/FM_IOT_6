@@ -14,4 +14,4 @@
         />
     @endif
     {!! QrCode::size(300)->backgroundColor(255,90,0)->generate(env('APP_URL') . '/storage/'. $record->attachment) !!}
-</x-filament-panels::page>
+</x-filament-panels::page

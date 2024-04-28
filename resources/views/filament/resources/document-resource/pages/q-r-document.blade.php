@@ -1,4 +1,4 @@
- <style type="text/css">
+<style type="text/css">
     @media print {
         .fi-modal-window { visibility: hidden; } /* a, h1, */
         #printableArea { display: block; visibility: visible; margin: 0 auto; }
@@ -15,4 +15,3 @@
     href="">
         <span class="fi-btn-label">{{ __('actions.print') }}</span>
 </a>
-
