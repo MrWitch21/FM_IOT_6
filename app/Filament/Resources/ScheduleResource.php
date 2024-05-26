@@ -51,7 +51,7 @@ class ScheduleResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
-                Forms\Components\TextInput::make('note')
+                Forms\Components\TextInput::make('note')->label(__('fields.note'))
                     ->maxLength(255),
             ]);
     }

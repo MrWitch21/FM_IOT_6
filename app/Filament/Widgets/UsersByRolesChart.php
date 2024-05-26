@@ -17,7 +17,7 @@ class UsersByRolesChart extends ChartWidget
     {
         $roles = Role::all()->pluck('name');
         $data = [];
-        $colors = ['red', 'green', 'blue'];
+        $colors = ['red', 'green', 'blue', 'yellow', 'gray', 'orange', 'pink'];
 
         foreach ($roles as $role) {
             $data[] = User::with('roles')->get()->filter(
